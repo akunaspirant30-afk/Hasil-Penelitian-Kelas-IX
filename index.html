@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Laporan Hasil Penelitian Siswa Kelas IX</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            800: '#1e3a8a',
+                            900: '#0F294A',
+                            950: '#090d16',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-blue-600 selection:text-white flex flex-col min-h-screen">
+
+    <!-- =====================================================================
+         1. HEADER / NAVBAR SEDERHANA
+         CATATAN PENGELOLA: Ganti href="https://drive.google.com" pada tombol
+         Google Drive di bawah dengan tautan folder berbagi sekolah Anda.
+    ====================================================================== -->
+    <header class="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+            <!-- Logo & Judul Portal -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center shrink-0 transition-transform duration-200 group-hover:scale-105" data-school-logo-container>
+                    <!-- SVG Vektor Resmi SMPN 239 Jakarta -->
+                    <svg viewBox="0 0 240 240" class="w-full h-full drop-shadow-sm" role="img" aria-label="Logo Resmi SMPN 239 Jakarta">
+                        <!-- Bintang Segi Delapan Bingkai Hijau -->
+                        <polygon points="120,8 148,54 202,42 190,96 232,120 190,144 202,198 148,186 120,232 92,186 38,198 50,144 8,120 50,96 38,42 92,54" fill="#15803d" stroke="#14532d" stroke-width="3" stroke-linejoin="round"/>
+                        <!-- Bintang Segi Delapan Isi Biru Tua -->
+                        <polygon points="120,20 144,61 190,51 180,97 218,120 180,143 190,189 144,179 120,220 96,179 50,189 60,143 22,120 60,97 50,51 96,61" fill="#1e3a8a" stroke="#172554" stroke-width="2" stroke-linejoin="round"/>
+
+                        <!-- Sayap Api Kiri (Kuning & Merah) -->
+                        <path d="M92,164 C60,164 46,136 52,102 C56,78 72,62 84,54 C76,72 76,92 84,108 C88,94 94,84 102,78 C94,100 94,126 102,148 Z" fill="#facc15" stroke="#854d0e" stroke-width="2.5" stroke-linejoin="round"/>
+                        <path d="M90,156 C68,154 58,132 62,106 C65,88 75,76 83,70 C78,86 80,104 88,118 C92,108 96,100 100,96 C96,114 96,134 100,148 Z" fill="#dc2626" stroke="#7f1d1d" stroke-width="1.8" stroke-linejoin="round"/>
+
+                        <!-- Sayap Api Kanan (Kuning & Merah) -->
+                        <path d="M148,164 C180,164 194,136 188,102 C184,78 168,62 156,54 C164,72 164,92 156,108 C152,94 146,84 138,78 C146,100 146,126 138,148 Z" fill="#facc15" stroke="#854d0e" stroke-width="2.5" stroke-linejoin="round"/>
+                        <path d="M150,156 C172,154 182,132 178,106 C175,88 165,76 157,70 C162,86 160,104 152,118 C148,108 144,100 140,96 C144,114 144,134 140,148 Z" fill="#dc2626" stroke="#7f1d1d" stroke-width="1.8" stroke-linejoin="round"/>
+
+                        <!-- Buku Terbuka di Tengah -->
+                        <path d="M120,104 C106,96 90,96 76,100 L76,144 C90,140 106,140 120,148 C134,140 150,140 164,144 L164,100 C150,96 134,96 120,104 Z" fill="#ffffff" stroke="#0f172a" stroke-width="2.5" stroke-linejoin="round"/>
+                        <line x1="120" y1="104" x2="120" y2="148" stroke="#0f172a" stroke-width="2.5"/>
+                        <line x1="84" y1="112" x2="112" y2="115" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="84" y1="121" x2="112" y2="124" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="84" y1="130" x2="112" y2="133" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="128" y1="115" x2="156" y2="112" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="128" y1="124" x2="156" y2="121" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="128" y1="133" x2="156" y2="130" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+
+                        <!-- Obor & Nyala Api -->
+                        <path d="M115,74 L125,74 L128,158 L112,158 Z" fill="#ffffff" stroke="#0f172a" stroke-width="2.4" stroke-linejoin="round"/>
+                        <rect x="108" y="70" width="24" height="6" rx="2" fill="#ffffff" stroke="#0f172a" stroke-width="2.2"/>
+                        <path d="M120,44 C126,52 127,61 120,70 C113,61 114,52 120,44 Z" fill="#dc2626" stroke="#7f1d1d" stroke-width="2" stroke-linejoin="round"/>
+                        <!-- Bintang Kuning di Puncak Obor -->
+                        <polygon points="120,24 123.5,31.5 131.5,32.5 125.7,38 127.2,46 120,42 112.8,46 114.3,38 108.5,32.5 116.5,31.5" fill="#facc15" stroke="#854d0e" stroke-width="1.6" stroke-linejoin="round"/>
+
+                        <!-- Dudukan Bawah Obor -->
+                        <path d="M96,158 L144,158 L138,168 L102,168 Z" fill="#ffffff" stroke="#0f172a" stroke-width="2.2" stroke-linejoin="round"/>
+                        <rect x="90" y="168" width="60" height="7" rx="2" fill="#ffffff" stroke="#0f172a" stroke-width="2.2"/>
+
+                        <!-- Pita Bertuliskan SMPN 239 JAKARTA -->
+                        <path d="M54,174 L74,178 L74,196 L54,192 L62,183 Z" fill="#ca8a04" stroke="#713f12" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M186,174 L166,178 L166,196 L186,192 L178,183 Z" fill="#ca8a04" stroke="#713f12" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M70,170 L170,170 L166,192 L74,192 Z" fill="#eab308" stroke="#713f12" stroke-width="2.2" stroke-linejoin="round"/>
+                        <text x="120" y="184.5" text-anchor="middle" fill="#0f172a" font-family="Inter, sans-serif" font-size="9.5" font-weight="800" letter-spacing="0.4">SMPN 239 JAKARTA</text>
+                    </svg>
+                </div>
+                <div>
+                    <span class="font-heading font-bold text-base sm:text-lg text-slate-900 block leading-tight">
+                        Portal Riset Kelas IX
+                    </span>
+                    <span class="text-xs text-slate-500 font-medium hidden sm:block">
+                        SMPN 239 Jakarta • Repositori Karya Ilmiah
+                    </span>
+                </div>
+            </a>
+
+            <!-- Navigasi Cepat -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+                <a href="#pengenalan" class="hover:text-blue-700 transition-colors">Tentang & Tujuan</a>
+                <a href="#panduan" class="hover:text-blue-700 transition-colors">Panduan Akses</a>
+                <a href="https://drive.google.com/drive/folders/1wKuxD_R0EcMMKGrrNQcHUbsDuQ7RiSva" target="_blank" rel="noopener noreferrer" data-drive-link class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-50 text-blue-700 font-semibold hover:bg-blue-100 transition-colors">
+                    <span>Hasil Penelitian Kelas IX</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- =====================================================================
+             2. HERO SECTION (FOKUS PENGENALAN & TOMBOL GOOGLE DRIVE)
+        ====================================================================== -->
+        <section class="relative overflow-hidden bg-gradient-to-b from-[#0F294A] via-blue-950 to-slate-900 text-white py-20 sm:py-28 lg:py-32">
+            <!-- Dekorasi Latar Belakang Halus -->
+            <div class="absolute inset-0 opacity-10 pointer-events-none">
+                <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-blue-400 blur-3xl"></div>
+                <div class="absolute bottom-0 left-10 w-80 h-80 rounded-full bg-emerald-400 blur-3xl"></div>
+            </div>
+
+            <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <!-- Logo Sekolah di Bagian Hero -->
+                <div class="flex flex-col items-center justify-center mb-5">
+                    <div class="w-24 h-24 sm:w-28 sm:h-28 p-2 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 shadow-xl flex items-center justify-center" data-school-logo-container>
+                        <!-- SVG Vektor Resmi SMPN 239 Jakarta -->
+                        <svg viewBox="0 0 240 240" class="w-full h-full drop-shadow" role="img" aria-label="Logo Resmi SMPN 239 Jakarta">
+                            <polygon points="120,8 148,54 202,42 190,96 232,120 190,144 202,198 148,186 120,232 92,186 38,198 50,144 8,120 50,96 38,42 92,54" fill="#15803d" stroke="#14532d" stroke-width="3" stroke-linejoin="round"/>
+                            <polygon points="120,20 144,61 190,51 180,97 218,120 180,143 190,189 144,179 120,220 96,179 50,189 60,143 22,120 60,97 50,51 96,61" fill="#1e3a8a" stroke="#172554" stroke-width="2" stroke-linejoin="round"/>
+                            <path d="M92,164 C60,164 46,136 52,102 C56,78 72,62 84,54 C76,72 76,92 84,108 C88,94 94,84 102,78 C94,100 94,126 102,148 Z" fill="#facc15" stroke="#854d0e" stroke-width="2.5" stroke-linejoin="round"/>
+                            <path d="M90,156 C68,154 58,132 62,106 C65,88 75,76 83,70 C78,86 80,104 88,118 C92,108 96,100 100,96 C96,114 96,134 100,148 Z" fill="#dc2626" stroke="#7f1d1d" stroke-width="1.8" stroke-linejoin="round"/>
+                            <path d="M148,164 C180,164 194,136 188,102 C184,78 168,62 156,54 C164,72 164,92 156,108 C152,94 146,84 138,78 C146,100 146,126 138,148 Z" fill="#facc15" stroke="#854d0e" stroke-width="2.5" stroke-linejoin="round"/>
+                            <path d="M150,156 C172,154 182,132 178,106 C175,88 165,76 157,70 C162,86 160,104 152,118 C148,108 144,100 140,96 C144,114 144,134 140,148 Z" fill="#dc2626" stroke="#7f1d1d" stroke-width="1.8" stroke-linejoin="round"/>
+                            <path d="M120,104 C106,96 90,96 76,100 L76,144 C90,140 106,140 120,148 C134,140 150,140 164,144 L164,100 C150,96 134,96 120,104 Z" fill="#ffffff" stroke="#0f172a" stroke-width="2.5" stroke-linejoin="round"/>
+                            <line x1="120" y1="104" x2="120" y2="148" stroke="#0f172a" stroke-width="2.5"/>
+                            <line x1="84" y1="112" x2="112" y2="115" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="84" y1="121" x2="112" y2="124" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="84" y1="130" x2="112" y2="133" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="128" y1="115" x2="156" y2="112" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="128" y1="124" x2="156" y2="121" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="128" y1="133" x2="156" y2="130" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M115,74 L125,74 L128,158 L112,158 Z" fill="#ffffff" stroke="#0f172a" stroke-width="2.4" stroke-linejoin="round"/>
+                            <rect x="108" y="70" width="24" height="6" rx="2" fill="#ffffff" stroke="#0f172a" stroke-width="2.2"/>
+                            <path d="M120,44 C126,52 127,61 120,70 C113,61 114,52 120,44 Z" fill="#dc2626" stroke="#7f1d1d" stroke-width="2" stroke-linejoin="round"/>
+                            <polygon points="120,24 123.5,31.5 131.5,32.5 125.7,38 127.2,46 120,42 112.8,46 114.3,38 108.5,32.5 116.5,31.5" fill="#facc15" stroke="#854d0e" stroke-width="1.6" stroke-linejoin="round"/>
+                            <path d="M96,158 L144,158 L138,168 L102,168 Z" fill="#ffffff" stroke="#0f172a" stroke-width="2.2" stroke-linejoin="round"/>
+                            <rect x="90" y="168" width="60" height="7" rx="2" fill="#ffffff" stroke="#0f172a" stroke-width="2.2"/>
+                            <path d="M54,174 L74,178 L74,196 L54,192 L62,183 Z" fill="#ca8a04" stroke="#713f12" stroke-width="2" stroke-linejoin="round"/>
+                            <path d="M186,174 L166,178 L166,196 L186,192 L178,183 Z" fill="#ca8a04" stroke="#713f12" stroke-width="2" stroke-linejoin="round"/>
+                            <path d="M70,170 L170,170 L166,192 L74,192 Z" fill="#eab308" stroke="#713f12" stroke-width="2.2" stroke-linejoin="round"/>
+                            <text x="120" y="184.5" text-anchor="middle" fill="#0f172a" font-family="Inter, sans-serif" font-size="9.5" font-weight="800" letter-spacing="0.4">SMPN 239 JAKARTA</text>
+                        </svg>
+                    </div>
+                    <!-- Opsi Unggah File Gambar Logo Lokal (misal: foto logo dutis.png) -->
+                    <div class="mt-3 flex flex-wrap items-center justify-center gap-2">
+                        <label for="local-logo-input" class="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-[11px] sm:text-xs text-slate-200 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-emerald-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                            </svg>
+                            <span>Ganti Logo (foto logo dutis.png)</span>
+                        </label>
+                        <input id="local-logo-input" type="file" accept="image/*" class="hidden" onchange="handleLocalLogoUpload(event)">
+                        <button id="reset-logo-btn" type="button" onclick="resetDefaultLogoSvg()" class="hidden px-2.5 py-1 rounded-full bg-slate-800/80 hover:bg-slate-700 text-[11px] text-slate-300 transition-colors">
+                            Reset SVG
+                        </button>
+                    </div>
+                    <p id="logo-status-text" class="mt-1.5 text-[11px] text-slate-400">
+                        Menggunakan logo vektor bawaan • Anda juga dapat memuat file gambar lokal.
+                    </p>
+                </div>
+
+                <!-- Lencana Portal Resmi -->
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-900/70 border border-blue-700/60 text-blue-200 text-xs sm:text-sm font-medium mb-6">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Publikasi Digital Resmi • SMPN 239 Jakarta</span>
+                </div>
+
+                <!-- Judul Utama -->
+                <h1 class="font-heading font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-tight text-white leading-tight mb-6">
+                    Portal Laporan Hasil Penelitian Siswa Kelas IX
+                </h1>
+
+                <!-- Sub-judul / Pengenalan Singkat -->
+                <p class="text-base sm:text-lg lg:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed mb-10">
+                    Wadah dokumentasi digital karya ilmiah, eksplorasi data, dan temuan riset siswa-siswi kelas IX SMPN 239 Jakarta. Seluruh dokumen laporan lengkap telah diarsipkan secara terstruktur dan dapat diakses langsung melalui folder Google Drive sekolah.
+                </p>
+
+                <!-- Tombol CTA Utama Masuk Google Drive -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a id="main-drive-btn"
+                       data-drive-link
+                       href="https://drive.google.com/drive/folders/1wKuxD_R0EcMMKGrrNQcHUbsDuQ7RiSva"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white font-semibold text-base sm:text-lg shadow-lg shadow-emerald-950/50 transition-all duration-200 transform hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-emerald-400/50">
+                        <!-- Ikon Folder / Google Drive -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M7.71 3.5L1.15 15l3.43 6 6.55-11.5L7.71 3.5zm1.93 0l6.56 11.5h6.65L16.29 3.5H9.64zm5.95 12.5H2.46l-1.31 2.3 2.13 3.7h16.9l2.13-3.7-1.32-2.3h-5.4z"/>
+                        </svg>
+                        <span>Hasil Penelitian Kelas IX</span>
+                    </a>
+
+                    <a href="#panduan" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white font-medium text-base transition-colors">
+                        <span>Cara Mengakses</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Informasi Tambahan Kecil di Bawah Tombol -->
+                <p class="mt-5 text-xs sm:text-sm text-slate-400 flex items-center justify-center gap-1.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                    <span>Tersedia dalam format PDF • Terkelompok berdasarkan Kelas & Bidang Studi</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             3. BAGIAN PENGENALAN & TUJUAN PROYEK (3 KARTU RINGKAS)
+        ====================================================================== -->
+        <section id="pengenalan" class="py-16 sm:py-24 bg-white border-b border-slate-200/70">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Header Bagian -->
+                <div class="max-w-3xl mx-auto text-center mb-14">
+                    <span class="text-blue-700 font-semibold text-sm uppercase tracking-wider">Tentang Portal & Proyek Riset</span>
+                    <h2 class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900 mt-2 mb-4">
+                        Membangun Budaya Literasi dan Berpikir Ilmiah Sejak Dini
+                    </h2>
+                    <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+                        Proyek Penelitian Siswa Kelas IX merupakan program pembelajaran berbasis riset di SMPN 239 Jakarta. Portal ini hadir untuk mendokumentasikan hasil karya siswa agar dapat diapresiasi oleh guru, orang tua, serta menjadi referensi belajar bagi adik kelas.
+                    </p>
+                </div>
+
+                <!-- Informasi Pelaksana Penelitian (Guru Pembimbing & Siswa Peneliti) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-6 max-w-4xl mx-auto mb-12">
+                    <!-- Blok Guru Pembimbing -->
+                    <div class="flex items-center gap-4 bg-blue-50/70 rounded-2xl p-5 sm:p-6 border border-blue-200/80 shadow-sm">
+                        <div class="w-12 h-12 rounded-xl bg-blue-900 text-white flex items-center justify-center shrink-0 shadow-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-blue-700 block mb-0.5">
+                                Guru Pembimbing
+                            </span>
+                            <p class="font-heading font-bold text-lg sm:text-xl text-slate-900">
+                                Dri Pratiwi S. Pd
+                            </p>
+                            <span class="text-xs text-slate-500">
+                                Pembimbing Karya Ilmiah SMPN 239 Jakarta
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Blok Siswa Peneliti -->
+                    <div class="flex items-center gap-4 bg-emerald-50/70 rounded-2xl p-5 sm:p-6 border border-emerald-200/80 shadow-sm">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-emerald-700 block mb-0.5">
+                                Siswa Peneliti
+                            </span>
+                            <p class="font-heading font-bold text-lg sm:text-xl text-slate-900">
+                                Siswa/i Kelas 9
+                            </p>
+                            <span class="text-xs text-slate-500">
+                                Seluruh Kelompok Riset Kelas IX
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3 Kartu Tujuan Utama -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                    <!-- Kartu 1: Kepekaan Ilmiah -->
+                    <div class="bg-slate-50 rounded-2xl p-7 border border-slate-200/80 hover:border-blue-300 hover:shadow-md transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-800 flex items-center justify-center mb-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                            </svg>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-slate-900 mb-2.5">
+                            Kepekaan Ilmiah
+                        </h3>
+                        <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                            Melatih siswa mengamati fenomena nyata di lingkungan sekitar serta merumuskan permasalahan secara kritis di bidang sains, teknologi, lingkungan, maupun sosial budaya.
+                        </p>
+                    </div>
+
+                    <!-- Kartu 2: Metode Riset Dasar -->
+                    <div class="bg-slate-50 rounded-2xl p-7 border border-slate-200/80 hover:border-blue-300 hover:shadow-md transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center mb-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                            </svg>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-slate-900 mb-2.5">
+                            Metode Riset Dasar
+                        </h3>
+                        <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                            Membekali siswa keterampilan menyusun hipotesis, melakukan eksperimen atau wawancara lapangan, mengolah data secara objektif, dan menarik kesimpulan yang valid.
+                        </p>
+                    </div>
+
+                    <!-- Kartu 3: Komunikasi Digital -->
+                    <div class="bg-slate-50 rounded-2xl p-7 border border-slate-200/80 hover:border-blue-300 hover:shadow-md transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-800 flex items-center justify-center mb-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-slate-900 mb-2.5">
+                            Komunikasi Digital
+                        </h3>
+                        <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                            Mengasah kemampuan menyusun laporan karya tulis ilmiah sesuai kaidah bahasa Indonesia yang baik serta mempublikasikannya secara rapi dalam format arsip digital.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             4. PANDUAN SINGKAT AKSES GOOGLE DRIVE (3 LANGKAH MUDAH)
+        ====================================================================== -->
+        <section id="panduan" class="py-16 sm:py-24 bg-slate-50">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-14">
+                    <span class="text-emerald-700 font-semibold text-sm uppercase tracking-wider">Petunjuk Penggunaan</span>
+                    <h2 class="font-heading font-bold text-2xl sm:text-3xl text-slate-900 mt-2 mb-3">
+                        Panduan Singkat Akses Laporan di Google Drive
+                    </h2>
+                    <p class="text-slate-600 text-base">
+                        Ikuti tiga langkah sederhana berikut untuk membaca atau mengunduh dokumen laporan penelitian siswa.
+                    </p>
+                </div>
+
+                <!-- 3 Langkah -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                    <!-- Langkah 1 -->
+                    <div class="bg-white rounded-2xl p-6 sm:p-7 border border-slate-200 shadow-sm relative">
+                        <div class="w-10 h-10 rounded-full bg-blue-900 text-white font-heading font-bold flex items-center justify-center text-base mb-5">
+                            1
+                        </div>
+                        <h3 class="font-heading font-bold text-lg text-slate-900 mb-2">
+                            Klik Tombol Arsip Drive
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Tekan tombol <strong class="text-slate-800">"Hasil Penelitian Kelas IX"</strong> pada bagian atas atau bawah halaman ini untuk membuka folder utama repositori di Google Drive.
+                        </p>
+                    </div>
+
+                    <!-- Langkah 2 -->
+                    <div class="bg-white rounded-2xl p-6 sm:p-7 border border-slate-200 shadow-sm relative">
+                        <div class="w-10 h-10 rounded-full bg-blue-900 text-white font-heading font-bold flex items-center justify-center text-base mb-5">
+                            2
+                        </div>
+                        <h3 class="font-heading font-bold text-lg text-slate-900 mb-2">
+                            Pilih Folder Kelas / Topik
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Di dalam Google Drive, pilih subfolder sesuai kelas (misal: <span class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded text-slate-700">Kelas_9A</span>) atau gunakan kolom pencarian Drive untuk mencari judul/nama siswa.
+                        </p>
+                    </div>
+
+                    <!-- Langkah 3 -->
+                    <div class="bg-white rounded-2xl p-6 sm:p-7 border border-slate-200 shadow-sm relative">
+                        <div class="w-10 h-10 rounded-full bg-emerald-600 text-white font-heading font-bold flex items-center justify-center text-base mb-5">
+                            3
+                        </div>
+                        <h3 class="font-heading font-bold text-lg text-slate-900 mb-2">
+                            Baca Online atau Unduh PDF
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Klik dua kali pada berkas laporan untuk membacanya langsung di peramban (*browser*), atau klik ikon <strong class="text-slate-800">Unduh (Download)</strong> untuk menyimpan salinan PDF.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Kotak Aksi Bawah (Secondary CTA) -->
+                <div class="mt-14 bg-[#0F294A] rounded-2xl p-8 sm:p-10 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-lg">
+                    <div class="text-center md:text-left">
+                        <h3 class="font-heading font-bold text-xl sm:text-2xl mb-2">
+                            Siap Menjelajahi Karya Ilmiah Siswa?
+                        </h3>
+                        <p class="text-blue-200 text-sm sm:text-base max-w-xl">
+                            Akses langsung folder penyimpanan resmi Google Drive untuk melihat daftar lengkap laporan hasil penelitian siswa kelas IX SMPN 239 Jakarta.
+                        </p>
+                    </div>
+                    <a data-drive-link
+                       href="https://drive.google.com/drive/folders/1wKuxD_R0EcMMKGrrNQcHUbsDuQ7RiSva"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="w-full md:w-auto shrink-0 inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm sm:text-base transition-colors shadow-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M7.71 3.5L1.15 15l3.43 6 6.55-11.5L7.71 3.5zm1.93 0l6.56 11.5h6.65L16.29 3.5H9.64zm5.95 12.5H2.46l-1.31 2.3 2.13 3.7h16.9l2.13-3.7-1.32-2.3h-5.4z"/>
+                        </svg>
+                        <span>Hasil Penelitian Kelas IX</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- =====================================================================
+         5. FOOTER AKADEMIS
+    ====================================================================== -->
+    <footer class="bg-slate-900 text-slate-400 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pb-8 border-b border-slate-800">
+                <div>
+                    <div class="flex items-center gap-3 text-white font-heading font-bold text-lg mb-3">
+                        <div class="w-11 h-11 flex items-center justify-center shrink-0" data-school-logo-container>
+                            <!-- SVG Vektor Resmi SMPN 239 Jakarta -->
+                            <svg viewBox="0 0 240 240" class="w-full h-full" role="img" aria-label="Logo SMPN 239 Jakarta">
+                                <polygon points="120,8 148,54 202,42 190,96 232,120 190,144 202,198 148,186 120,232 92,186 38,198 50,144 8,120 50,96 38,42 92,54" fill="#15803d" stroke="#14532d" stroke-width="3" stroke-linejoin="round"/>
+                                <polygon points="120,20 144,61 190,51 180,97 218,120 180,143 190,189 144,179 120,220 96,179 50,189 60,143 22,120 60,97 50,51 96,61" fill="#1e3a8a" stroke="#172554" stroke-width="2" stroke-linejoin="round"/>
+                                <path d="M92,164 C60,164 46,136 52,102 C56,78 72,62 84,54 C76,72 76,92 84,108 C88,94 94,84 102,78 C94,100 94,126 102,148 Z" fill="#facc15" stroke="#854d0e" stroke-width="2.5" stroke-linejoin="round"/>
+                                <path d="M90,156 C68,154 58,132 62,106 C65,88 75,76 83,70 C78,86 80,104 88,118 C92,108 96,100 100,96 C96,114 96,134 100,148 Z" fill="#dc2626" stroke="#7f1d1d" stroke-width="1.8" stroke-linejoin="round"/>
+                                <path d="M148,164 C180,164 194,136 188,102 C184,78 168,62 156,54 C164,72 164,92 156,108 C152,94 146,84 138,78 C146,100 146,126 138,148 Z" fill="#facc15" stroke="#854d0e" stroke-width="2.5" stroke-linejoin="round"/>
+                                <path d="M150,156 C172,154 182,132 178,106 C175,88 165,76 157,70 C162,86 160,104 152,118 C148,108 144,100 140,96 C144,114 144,134 140,148 Z" fill="#dc2626" stroke="#7f1d1d" stroke-width="1.8" stroke-linejoin="round"/>
+                                <path d="M120,104 C106,96 90,96 76,100 L76,144 C90,140 106,140 120,148 C134,140 150,140 164,144 L164,100 C150,96 134,96 120,104 Z" fill="#ffffff" stroke="#0f172a" stroke-width="2.5" stroke-linejoin="round"/>
+                                <line x1="120" y1="104" x2="120" y2="148" stroke="#0f172a" stroke-width="2.5"/>
+                                <path d="M115,74 L125,74 L128,158 L112,158 Z" fill="#ffffff" stroke="#0f172a" stroke-width="2.4" stroke-linejoin="round"/>
+                                <rect x="108" y="70" width="24" height="6" rx="2" fill="#ffffff" stroke="#0f172a" stroke-width="2.2"/>
+                                <path d="M120,44 C126,52 127,61 120,70 C113,61 114,52 120,44 Z" fill="#dc2626" stroke="#7f1d1d" stroke-width="2" stroke-linejoin="round"/>
+                                <polygon points="120,24 123.5,31.5 131.5,32.5 125.7,38 127.2,46 120,42 112.8,46 114.3,38 108.5,32.5 116.5,31.5" fill="#facc15" stroke="#854d0e" stroke-width="1.6" stroke-linejoin="round"/>
+                                <path d="M96,158 L144,158 L138,168 L102,168 Z" fill="#ffffff" stroke="#0f172a" stroke-width="2.2" stroke-linejoin="round"/>
+                                <rect x="90" y="168" width="60" height="7" rx="2" fill="#ffffff" stroke="#0f172a" stroke-width="2.2"/>
+                                <path d="M54,174 L74,178 L74,196 L54,192 L62,183 Z" fill="#ca8a04" stroke="#713f12" stroke-width="2" stroke-linejoin="round"/>
+                                <path d="M186,174 L166,178 L166,196 L186,192 L178,183 Z" fill="#ca8a04" stroke="#713f12" stroke-width="2" stroke-linejoin="round"/>
+                                <path d="M70,170 L170,170 L166,192 L74,192 Z" fill="#eab308" stroke="#713f12" stroke-width="2.2" stroke-linejoin="round"/>
+                                <text x="120" y="184.5" text-anchor="middle" fill="#0f172a" font-family="Inter, sans-serif" font-size="9.5" font-weight="800" letter-spacing="0.4">SMPN 239 JAKARTA</text>
+                            </svg>
+                        </div>
+                        <span>Portal Laporan Hasil Penelitian Siswa Kelas IX</span>
+                    </div>
+                    <p class="text-sm text-slate-400 max-w-md leading-relaxed">
+                        Repositori digital resmi karya ilmiah Siswa/i Kelas 9 SMPN 239 Jakarta di bawah bimbingan Dri Pratiwi S. Pd.
+                    </p>
+                </div>
+
+                <div class="md:text-right flex flex-col justify-center">
+                    <p class="text-sm font-semibold text-white mb-1">SMPN 239 Jakarta</p>
+                    <p class="text-sm text-slate-400">Jl. Nangka, Tanjung Barat, Kec. Jagakarsa, Kota Jakarta Selatan</p>
+                    <p class="text-sm text-slate-400 mt-1">Email: <span class="text-slate-300">riset.kelas9@smpn239jkt.sch.id</span></p>
+                </div>
+            </div>
+
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+                <p>Tim Publikasi Ilmiah Kelas IX SMPN 239 Jakarta. Seluruh hak cipta dilindungi.</p>
+                <p>Portal Arsip Riset Digital</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =====================================================================
+         JAVASCRIPT INTERAKTIVITAS LOGO LOKAL
+    ====================================================================== -->
+    <script>
+        const STORAGE_KEY_LOGO_DATA = 'smpn239_portal_riset_logo_dataurl';
+        const STORAGE_KEY_LOGO_NAME = 'smpn239_portal_riset_logo_name';
+
+        // Simpan markup SVG awal agar bisa di-reset kapan saja setelah memuat file lokal
+        const defaultLogoMarkupMap = new Map();
+
+        function applyCustomLogoDataUrl(dataUrl, fileName) {
+            const containers = document.querySelectorAll('[data-school-logo-container]');
+            containers.forEach((el) => {
+                el.innerHTML = `<img src="${dataUrl}" alt="Logo ${fileName || 'SMPN 239 Jakarta'}" class="w-full h-full object-contain rounded-lg">`;
+            });
+
+            const statusText = document.getElementById('logo-status-text');
+            const resetBtn = document.getElementById('reset-logo-btn');
+            if (statusText) {
+                statusText.textContent = `Memuat gambar lokal tersimpan: ${fileName || 'foto logo dutis.png'}`;
+            }
+            if (resetBtn) {
+                resetBtn.classList.remove('hidden');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const containers = document.querySelectorAll('[data-school-logo-container]');
+            containers.forEach((el, idx) => {
+                defaultLogoMarkupMap.set(idx, el.innerHTML);
+            });
+
+            // Pulihkan logo kustom dari localStorage jika tersedia
+            try {
+                const savedLogoData = localStorage.getItem(STORAGE_KEY_LOGO_DATA);
+                const savedLogoName = localStorage.getItem(STORAGE_KEY_LOGO_NAME);
+                if (savedLogoData) {
+                    applyCustomLogoDataUrl(savedLogoData, savedLogoName);
+                }
+            } catch (err) {
+                // Tetap gunakan SVG bawaan jika localStorage tidak tersedia
+            }
+        });
+
+        // Memuat file gambar lokal (misal: foto logo dutis.png) dan menyimpannya di localStorage
+        function handleLocalLogoUpload(event) {
+            try {
+                const file = event.target.files && event.target.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = function(loadEvent) {
+                    const dataUrl = loadEvent.target && loadEvent.target.result;
+                    if (!dataUrl) return;
+
+                    applyCustomLogoDataUrl(dataUrl, file.name);
+                    try {
+                        localStorage.setItem(STORAGE_KEY_LOGO_DATA, dataUrl);
+                        localStorage.setItem(STORAGE_KEY_LOGO_NAME, file.name);
+                    } catch (storageErr) {
+                        const statusText = document.getElementById('logo-status-text');
+                        if (statusText) {
+                            statusText.textContent = `Memuat gambar lokal: ${file.name} (ukuran terlalu besar untuk penyimpanan permanen)`;
+                        }
+                    }
+                };
+                reader.readAsDataURL(file);
+            } catch (err) {
+                const statusText = document.getElementById('logo-status-text');
+                if (statusText) {
+                    statusText.textContent = 'Gagal memuat file gambar lokal.';
+                }
+            }
+        }
+
+        // Mengembalikan tampilan ke logo vektor SVG bawaan SMPN 239 Jakarta
+        function resetDefaultLogoSvg() {
+            try {
+                localStorage.removeItem(STORAGE_KEY_LOGO_DATA);
+                localStorage.removeItem(STORAGE_KEY_LOGO_NAME);
+            } catch (err) {
+                // Abaikan jika storage tidak dapat diakses
+            }
+
+            const fileInput = document.getElementById('local-logo-input');
+            if (fileInput) {
+                fileInput.value = '';
+            }
+            const containers = document.querySelectorAll('[data-school-logo-container]');
+            containers.forEach((el, idx) => {
+                if (defaultLogoMarkupMap.has(idx)) {
+                    el.innerHTML = defaultLogoMarkupMap.get(idx);
+                }
+            });
+            const statusText = document.getElementById('logo-status-text');
+            const resetBtn = document.getElementById('reset-logo-btn');
+            if (statusText) {
+                statusText.textContent = 'Menggunakan logo vektor bawaan • Anda juga dapat memuat file gambar lokal.';
+            }
+            if (resetBtn) {
+                resetBtn.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
